@@ -5,13 +5,13 @@
 //  Created by Julian Worden on 7/17/22.
 //
 
+// swiftlint:disable all
+
 import UIKit
 import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

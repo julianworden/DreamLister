@@ -9,23 +9,49 @@
 /* Begin PBXBuildFile section */
 		AB35BE342884AD9300FE6C76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35BE332884AD9300FE6C76 /* AppDelegate.swift */; };
 		AB35BE362884AD9300FE6C76 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35BE352884AD9300FE6C76 /* SceneDelegate.swift */; };
-		AB35BE382884AD9300FE6C76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35BE372884AD9300FE6C76 /* ViewController.swift */; };
+		AB35BE382884AD9300FE6C76 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35BE372884AD9300FE6C76 /* MainViewController.swift */; };
 		AB35BE3B2884AD9300FE6C76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB35BE392884AD9300FE6C76 /* Main.storyboard */; };
 		AB35BE3E2884AD9300FE6C76 /* DreamLister.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB35BE3C2884AD9300FE6C76 /* DreamLister.xcdatamodeld */; };
 		AB35BE402884AD9400FE6C76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB35BE3F2884AD9400FE6C76 /* Assets.xcassets */; };
 		AB35BE432884AD9400FE6C76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB35BE412884AD9400FE6C76 /* LaunchScreen.storyboard */; };
+		ABAC68F12884B0C2000B1D33 /* Store+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC68E92884B0C2000B1D33 /* Store+CoreDataClass.swift */; };
+		ABAC68F22884B0C2000B1D33 /* Store+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC68EA2884B0C2000B1D33 /* Store+CoreDataProperties.swift */; };
+		ABAC68F32884B0C2000B1D33 /* Image+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC68EB2884B0C2000B1D33 /* Image+CoreDataClass.swift */; };
+		ABAC68F42884B0C2000B1D33 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC68EC2884B0C2000B1D33 /* Image+CoreDataProperties.swift */; };
+		ABAC68F52884B0C2000B1D33 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC68ED2884B0C2000B1D33 /* Item+CoreDataClass.swift */; };
+		ABAC68F62884B0C2000B1D33 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC68EE2884B0C2000B1D33 /* Item+CoreDataProperties.swift */; };
+		ABAC68F72884B0C2000B1D33 /* ItemType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC68EF2884B0C2000B1D33 /* ItemType+CoreDataClass.swift */; };
+		ABAC68F82884B0C2000B1D33 /* ItemType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC68F02884B0C2000B1D33 /* ItemType+CoreDataProperties.swift */; };
+		ABAC68FB2884B72D000B1D33 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC68FA2884B72C000B1D33 /* ItemTableViewCell.swift */; };
+		ABAC68FD2884B7E0000B1D33 /* MainViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC68FC2884B7E0000B1D33 /* MainViewController+UITableViewDataSource.swift */; };
+		ABAC68FF2884B7EB000B1D33 /* MainViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC68FE2884B7EB000B1D33 /* MainViewController+UITableViewDelegate.swift */; };
+		ABAC69012884C0C2000B1D33 /* UIView+shadowDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC69002884C0C2000B1D33 /* UIView+shadowDesign.swift */; };
+		ABAC69052884C7D4000B1D33 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC69042884C7D4000B1D33 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AB35BE302884AD9300FE6C76 /* DreamLister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamLister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB35BE332884AD9300FE6C76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB35BE352884AD9300FE6C76 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AB35BE372884AD9300FE6C76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AB35BE372884AD9300FE6C76 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AB35BE3A2884AD9300FE6C76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB35BE3D2884AD9300FE6C76 /* DreamLister.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamLister.xcdatamodel; sourceTree = "<group>"; };
 		AB35BE3F2884AD9400FE6C76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB35BE422884AD9400FE6C76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB35BE442884AD9400FE6C76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABAC68E92884B0C2000B1D33 /* Store+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+CoreDataClass.swift"; sourceTree = "<group>"; };
+		ABAC68EA2884B0C2000B1D33 /* Store+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		ABAC68EB2884B0C2000B1D33 /* Image+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataClass.swift"; sourceTree = "<group>"; };
+		ABAC68EC2884B0C2000B1D33 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		ABAC68ED2884B0C2000B1D33 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
+		ABAC68EE2884B0C2000B1D33 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		ABAC68EF2884B0C2000B1D33 /* ItemType+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemType+CoreDataClass.swift"; sourceTree = "<group>"; };
+		ABAC68F02884B0C2000B1D33 /* ItemType+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemType+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		ABAC68FA2884B72C000B1D33 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		ABAC68FC2884B7E0000B1D33 /* MainViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
+		ABAC68FE2884B7EB000B1D33 /* MainViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
+		ABAC69002884C0C2000B1D33 /* UIView+shadowDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+shadowDesign.swift"; sourceTree = "<group>"; };
+		ABAC69042884C7D4000B1D33 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +68,10 @@
 		AB35BE272884AD9300FE6C76 = {
 			isa = PBXGroup;
 			children = (
+				ABAC68E92884B0C2000B1D33 /* Store+CoreDataClass.swift */,
+				ABAC68EB2884B0C2000B1D33 /* Image+CoreDataClass.swift */,
+				ABAC68ED2884B0C2000B1D33 /* Item+CoreDataClass.swift */,
+				ABAC68EF2884B0C2000B1D33 /* ItemType+CoreDataClass.swift */,
 				AB35BE322884AD9300FE6C76 /* DreamLister */,
 				AB35BE312884AD9300FE6C76 /* Products */,
 			);
@@ -60,7 +90,10 @@
 			children = (
 				AB35BE332884AD9300FE6C76 /* AppDelegate.swift */,
 				AB35BE352884AD9300FE6C76 /* SceneDelegate.swift */,
-				AB35BE372884AD9300FE6C76 /* ViewController.swift */,
+				ABAC68E72884B057000B1D33 /* Model */,
+				ABAC68E62884B050000B1D33 /* View */,
+				ABAC69022884C0CD000B1D33 /* Extensions */,
+				ABAC69032884C7CE000B1D33 /* Utilities */,
 				AB35BE392884AD9300FE6C76 /* Main.storyboard */,
 				AB35BE3F2884AD9400FE6C76 /* Assets.xcassets */,
 				AB35BE412884AD9400FE6C76 /* LaunchScreen.storyboard */,
@@ -68,6 +101,44 @@
 				AB35BE3C2884AD9300FE6C76 /* DreamLister.xcdatamodeld */,
 			);
 			path = DreamLister;
+			sourceTree = "<group>";
+		};
+		ABAC68E62884B050000B1D33 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB35BE372884AD9300FE6C76 /* MainViewController.swift */,
+				ABAC68FA2884B72C000B1D33 /* ItemTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ABAC68E72884B057000B1D33 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABAC68EA2884B0C2000B1D33 /* Store+CoreDataProperties.swift */,
+				ABAC68EC2884B0C2000B1D33 /* Image+CoreDataProperties.swift */,
+				ABAC68EE2884B0C2000B1D33 /* Item+CoreDataProperties.swift */,
+				ABAC68F02884B0C2000B1D33 /* ItemType+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ABAC69022884C0CD000B1D33 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ABAC68FC2884B7E0000B1D33 /* MainViewController+UITableViewDataSource.swift */,
+				ABAC68FE2884B7EB000B1D33 /* MainViewController+UITableViewDelegate.swift */,
+				ABAC69002884C0C2000B1D33 /* UIView+shadowDesign.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ABAC69032884C7CE000B1D33 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				ABAC69042884C7D4000B1D33 /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,6 +151,7 @@
 				AB35BE2C2884AD9300FE6C76 /* Sources */,
 				AB35BE2D2884AD9300FE6C76 /* Frameworks */,
 				AB35BE2E2884AD9300FE6C76 /* Resources */,
+				ABAC68F92884B5A0000B1D33 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -136,15 +208,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		ABAC68F92884B5A0000B1D33 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AB35BE2C2884AD9300FE6C76 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABAC68F72884B0C2000B1D33 /* ItemType+CoreDataClass.swift in Sources */,
 				AB35BE3E2884AD9300FE6C76 /* DreamLister.xcdatamodeld in Sources */,
-				AB35BE382884AD9300FE6C76 /* ViewController.swift in Sources */,
+				ABAC68F22884B0C2000B1D33 /* Store+CoreDataProperties.swift in Sources */,
+				ABAC68F32884B0C2000B1D33 /* Image+CoreDataClass.swift in Sources */,
+				ABAC68F52884B0C2000B1D33 /* Item+CoreDataClass.swift in Sources */,
+				ABAC68F62884B0C2000B1D33 /* Item+CoreDataProperties.swift in Sources */,
+				ABAC68FB2884B72D000B1D33 /* ItemTableViewCell.swift in Sources */,
+				AB35BE382884AD9300FE6C76 /* MainViewController.swift in Sources */,
+				ABAC69012884C0C2000B1D33 /* UIView+shadowDesign.swift in Sources */,
+				ABAC68F12884B0C2000B1D33 /* Store+CoreDataClass.swift in Sources */,
+				ABAC69052884C7D4000B1D33 /* Constants.swift in Sources */,
+				ABAC68F82884B0C2000B1D33 /* ItemType+CoreDataProperties.swift in Sources */,
+				ABAC68FD2884B7E0000B1D33 /* MainViewController+UITableViewDataSource.swift in Sources */,
 				AB35BE342884AD9300FE6C76 /* AppDelegate.swift in Sources */,
 				AB35BE362884AD9300FE6C76 /* SceneDelegate.swift in Sources */,
+				ABAC68FF2884B7EB000B1D33 /* MainViewController+UITableViewDelegate.swift in Sources */,
+				ABAC68F42884B0C2000B1D33 /* Image+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +402,6 @@
 				INFOPLIST_FILE = DreamLister/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -324,7 +429,6 @@
 				INFOPLIST_FILE = DreamLister/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
