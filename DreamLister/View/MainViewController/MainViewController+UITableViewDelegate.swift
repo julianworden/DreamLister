@@ -10,7 +10,7 @@ import UIKit
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let objects = controller.fetchedObjects,
+        if let objects = viewModel.controller.fetchedObjects,
                objects.count > 0 {
                    let item = objects[indexPath.row]
                    let detailsViewController = DetailsViewController()

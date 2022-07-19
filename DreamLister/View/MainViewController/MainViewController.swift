@@ -5,24 +5,27 @@
 //  Created by Julian Worden on 7/17/22.
 //
 
+import Combine
 import CoreData
 import UIKit
 
+// swiftlint:disable force_cast
+
 class MainViewController: UIViewController {
-    let items = [Item]()
+    let viewModel = MainViewModel()
+    var subscribers = Set<AnyCancellable>()
 
     let segmentedControl = UISegmentedControl()
     let tableView = UITableView()
-
-    var controller: NSFetchedResultsController<Item>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureViews()
         layoutViews()
-//        generateDummyData()
-        attemptFetch()
+        configureSubscribers()
+//        viewModel.generateDummyData()
+        viewModel.attemptFetch()
     }
 
     func configureViews() {
@@ -38,6 +41,7 @@ class MainViewController: UIViewController {
         segmentedControl.insertSegment(withTitle: "Name", at: 2, animated: true)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: #selector(segmentedControlChanged), for: .valueChanged)
+        viewModel.selectedSegmentIndex = segmentedControl.selectedSegmentIndex
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -64,102 +68,47 @@ class MainViewController: UIViewController {
         ])
     }
 
+    func configureSubscribers() {
+        subscribers = [
+            viewModel.$updatedIndexPath
+                .sink(receiveValue: { indexPath in
+                    if let indexPath = indexPath {
+                        switch self.viewModel.controllerChangeType {
+                        case .insert:
+                            self.tableView.insertRows(at: [indexPath], with: .fade)
+                            self.tableView.reloadData()
+                        case .delete:
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            self.tableView.reloadData()
+                        case .update:
+                            let cell = self.tableView.cellForRow(at: indexPath) as! ItemTableViewCell
+                            self.configureCell(cell, indexPath: indexPath)
+                            self.tableView.reloadData()
+                        case .move:
+                            self.tableView.insertRows(at: [indexPath], with: .fade)
+                            self.tableView.reloadData()
+                        default:
+                            self.tableView.reloadData()
+                        }
+                    }
+                }),
+            viewModel.$tableViewDidBeginUpdates
+                .sink(receiveValue: { _ in
+                    self.tableView.beginUpdates()
+                }),
+            viewModel.$tableViewDidEndUpdates
+                .sink(receiveValue: { _ in
+                    self.tableView.endUpdates()
+                })
+        ]
+    }
+
     @objc func segmentedControlChanged() {
-        attemptFetch()
+        viewModel.attemptFetch()
         tableView.reloadData()
     }
 
     @objc func addButtonTapped() {
         navigationController?.pushViewController(DetailsViewController(), animated: true)
-    }
-}
-
-extension MainViewController: NSFetchedResultsControllerDelegate {
-    func generateDummyData() {
-        let item1 = Item(context: Constants.context)
-        item1.name = "MacBook Pro"
-        item1.price = 3000
-        item1.details = "I'd really like a new MacBook with a keyboard that doesn't break all the time..."
-
-        let item2 = Item(context: Constants.context)
-        item2.name = "Bose N700 Headphones"
-        item2.price = 349
-        item2.details = "They are pricey, but being able to block out other people is worth it."
-
-        let item3 = Item(context: Constants.context)
-        item3.name = "Tesla Model Y"
-        item3.price = 62000
-        item3.details = "This is like buying the future."
-
-        Constants.appDelegate.saveContext()
-    }
-
-    func attemptFetch() {
-        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
-        let dateSort = NSSortDescriptor(key: "createdDate", ascending: false)
-        let priceSort = NSSortDescriptor(key: "price", ascending: true)
-        let nameSort = NSSortDescriptor(key: "name", ascending: true)
-
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            fetchRequest.sortDescriptors = [dateSort]
-        case 1:
-            fetchRequest.sortDescriptors = [priceSort]
-        case 2:
-            fetchRequest.sortDescriptors = [nameSort]
-        default:
-            break
-        }
-
-        let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
-                                                    managedObjectContext: Constants.context,
-                                                    sectionNameKeyPath: nil,
-                                                    cacheName: nil)
-
-        controller.delegate = self
-        self.controller = controller
-
-        do {
-            try controller.performFetch()
-        } catch let error {
-            print(error)
-        }
-    }
-
-    // swiftlint:disable force_cast
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                    didChange anObject: Any,
-                    at indexPath: IndexPath?,
-                    for type: NSFetchedResultsChangeType,
-                    newIndexPath: IndexPath?) {
-        switch type {
-        case.insert:
-            if let indexPath = newIndexPath {
-                tableView.insertRows(at: [indexPath], with: .fade)
-            }
-        case .delete:
-            if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-        case .update:
-            if let indexPath = indexPath {
-                let cell = tableView.cellForRow(at: indexPath) as! ItemTableViewCell
-                configureCell(cell, indexPath: indexPath)
-            }
-        case .move:
-            if let indexPath = indexPath {
-                tableView.insertRows(at: [indexPath], with: .fade)
-            }
-        @unknown default:
-            break
-        }
-    }
-
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
     }
 }

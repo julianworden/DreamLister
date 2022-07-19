@@ -10,19 +10,19 @@ import UIKit
 
 extension MainViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        if let sections = controller.sections {
+        if let sections = viewModel.controller.sections {
             return sections.count
         } else {
-            return 0
+            return 1
         }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let sections = controller.sections {
+        if let sections = viewModel.controller.sections {
             let sectionInfo = sections[section]
             return sectionInfo.numberOfObjects
         } else {
-            return 0
+            return 1
         }
     }
 
@@ -38,7 +38,7 @@ extension MainViewController: UITableViewDataSource {
     func configureCell(_ cell: ItemTableViewCell, indexPath: IndexPath) {
         cell.selectionStyle = .none
 
-        let item = controller.object(at: indexPath)
+        let item = viewModel.controller.object(at: indexPath)
         cell.configureViews(withItem: item)
     }
 }

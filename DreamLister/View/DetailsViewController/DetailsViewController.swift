@@ -142,6 +142,7 @@ class DetailsViewController: UIViewController {
             item = itemToEdit
         } else {
             item = Item(context: Constants.context)
+//            itemImageView.image = UIImage(named: "imagePick")
         }
 
         guard let title = itemNameTextField.text,

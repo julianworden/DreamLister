@@ -17,6 +17,7 @@
 		AB4A92FC2886DF850093DBCE /* DetailsViewController+UIPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4A92FB2886DF850093DBCE /* DetailsViewController+UIPickerViewDelegate.swift */; };
 		AB4A92FE2886DF940093DBCE /* DetailsViewController+UIPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4A92FD2886DF940093DBCE /* DetailsViewController+UIPickerViewDataSource.swift */; };
 		AB4A93002886F6DF0093DBCE /* DetailsViewController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4A92FF2886F6DF0093DBCE /* DetailsViewController+UIImagePickerControllerDelegate.swift */; };
+		AB4A93022886FA010093DBCE /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4A93012886FA010093DBCE /* MainViewModel.swift */; };
 		ABAC68F12884B0C2000B1D33 /* Store+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC68E92884B0C2000B1D33 /* Store+CoreDataClass.swift */; };
 		ABAC68F22884B0C2000B1D33 /* Store+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC68EA2884B0C2000B1D33 /* Store+CoreDataProperties.swift */; };
 		ABAC68F32884B0C2000B1D33 /* Image+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC68EB2884B0C2000B1D33 /* Image+CoreDataClass.swift */; };
@@ -47,6 +48,7 @@
 		AB4A92FB2886DF850093DBCE /* DetailsViewController+UIPickerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailsViewController+UIPickerViewDelegate.swift"; sourceTree = "<group>"; };
 		AB4A92FD2886DF940093DBCE /* DetailsViewController+UIPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailsViewController+UIPickerViewDataSource.swift"; sourceTree = "<group>"; };
 		AB4A92FF2886F6DF0093DBCE /* DetailsViewController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailsViewController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
+		AB4A93012886FA010093DBCE /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		ABAC68E92884B0C2000B1D33 /* Store+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+CoreDataClass.swift"; sourceTree = "<group>"; };
 		ABAC68EA2884B0C2000B1D33 /* Store+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ABAC68EB2884B0C2000B1D33 /* Image+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				AB35BE372884AD9300FE6C76 /* MainViewController.swift */,
+				AB4A93012886FA010093DBCE /* MainViewModel.swift */,
 				ABAC68FC2884B7E0000B1D33 /* MainViewController+UITableViewDataSource.swift */,
 				ABAC68FE2884B7EB000B1D33 /* MainViewController+UITableViewDelegate.swift */,
 				ABAC68FA2884B72C000B1D33 /* ItemTableViewCell.swift */,
@@ -286,6 +289,7 @@
 				AB4A92FE2886DF940093DBCE /* DetailsViewController+UIPickerViewDataSource.swift in Sources */,
 				AB35BE362884AD9300FE6C76 /* SceneDelegate.swift in Sources */,
 				ABAC68FF2884B7EB000B1D33 /* MainViewController+UITableViewDelegate.swift in Sources */,
+				AB4A93022886FA010093DBCE /* MainViewModel.swift in Sources */,
 				ABAC68F42884B0C2000B1D33 /* Image+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
