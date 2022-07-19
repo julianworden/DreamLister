@@ -28,7 +28,10 @@ class MainViewController: UIViewController {
     func configureViews() {
         view.backgroundColor = .white
         title = "Dream Lister"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                 target: self,
+                                                 action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem = rightBarButtonItem
 
         segmentedControl.insertSegment(withTitle: "Newest", at: 0, animated: true)
         segmentedControl.insertSegment(withTitle: "Price", at: 1, animated: true)
@@ -58,13 +61,16 @@ class MainViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-
         ])
     }
 
     @objc func segmentedControlChanged() {
         attemptFetch()
         tableView.reloadData()
+    }
+
+    @objc func addButtonTapped() {
+        navigationController?.pushViewController(DetailsViewController(), animated: true)
     }
 }
 
@@ -118,5 +124,42 @@ extension MainViewController: NSFetchedResultsControllerDelegate {
         } catch let error {
             print(error)
         }
+    }
+
+    // swiftlint:disable force_cast
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
+        switch type {
+        case.insert:
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        case .update:
+            if let indexPath = indexPath {
+                let cell = tableView.cellForRow(at: indexPath) as! ItemTableViewCell
+                configureCell(cell, indexPath: indexPath)
+            }
+        case .move:
+            if let indexPath = indexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+        @unknown default:
+            break
+        }
+    }
+
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
     }
 }

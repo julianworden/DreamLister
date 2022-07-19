@@ -31,7 +31,7 @@ class ItemTableViewCell: UITableViewCell {
         itemContentView.backgroundColor = .white
         itemContentView.shadowDesign = true
 
-        itemImageView.image = UIImage(named: "tesla")
+        itemImageView.image = item.image?.image as? UIImage ?? UIImage(named: "imagePick")
         itemImageView.contentMode = .scaleAspectFit
         itemImageView.clipsToBounds = true
 
@@ -74,7 +74,16 @@ class ItemTableViewCell: UITableViewCell {
             itemLabelStack.topAnchor.constraint(equalTo: itemContentView.topAnchor, constant: 8),
             itemLabelStack.bottomAnchor.constraint(equalTo: itemContentView.bottomAnchor, constant: -8),
             itemLabelStack.leadingAnchor.constraint(equalTo: itemImageView.trailingAnchor, constant: 8),
-            itemLabelStack.trailingAnchor.constraint(equalTo: itemContentView.trailingAnchor)
+            itemLabelStack.trailingAnchor.constraint(equalTo: itemContentView.trailingAnchor, constant: -8),
+
+            itemNameLabel.trailingAnchor.constraint(equalTo: itemContentView.trailingAnchor, constant: -8),
+            itemNameLabel.heightAnchor.constraint(equalToConstant: 25),
+
+            itemPriceLabel.trailingAnchor.constraint(equalTo: itemContentView.trailingAnchor, constant: -8),
+            itemPriceLabel.heightAnchor.constraint(equalToConstant: 25),
+
+            itemDetailsLabel.trailingAnchor.constraint(equalTo: itemContentView.trailingAnchor, constant: -8),
+            itemDetailsLabel.heightAnchor.constraint(equalToConstant: 25)
         ])
     }
 }
