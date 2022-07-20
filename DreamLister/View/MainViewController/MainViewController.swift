@@ -40,32 +40,13 @@ class MainViewController: UIViewController {
         segmentedControl.insertSegment(withTitle: "Price", at: 1, animated: true)
         segmentedControl.insertSegment(withTitle: "Name", at: 2, animated: true)
         segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.addTarget(self, action: #selector(segmentedControlChanged), for: .valueChanged)
         viewModel.selectedSegmentIndex = segmentedControl.selectedSegmentIndex
+        segmentedControl.addTarget(self, action: #selector(segmentedControlChanged), for: .valueChanged)
 
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
         tableView.separatorStyle = .none
-    }
-
-    func layoutViews() {
-        view.addSubview(segmentedControl)
-        view.addSubview(tableView)
-
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-
-            tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 20),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
     }
 
     func configureSubscribers() {
@@ -75,17 +56,17 @@ class MainViewController: UIViewController {
                     if let indexPath = indexPath {
                         switch self.viewModel.controllerChangeType {
                         case .insert:
-                            self.tableView.insertRows(at: [indexPath], with: .fade)
+                            self.tableView.insertRows(at: [indexPath], with: .none)
                             self.tableView.reloadData()
                         case .delete:
-                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            self.tableView.deleteRows(at: [indexPath], with: .none)
                             self.tableView.reloadData()
                         case .update:
                             let cell = self.tableView.cellForRow(at: indexPath) as! ItemTableViewCell
                             self.configureCell(cell, indexPath: indexPath)
                             self.tableView.reloadData()
                         case .move:
-                            self.tableView.insertRows(at: [indexPath], with: .fade)
+                            self.tableView.insertRows(at: [indexPath], with: .none)
                             self.tableView.reloadData()
                         default:
                             self.tableView.reloadData()
@@ -104,11 +85,35 @@ class MainViewController: UIViewController {
     }
 
     @objc func segmentedControlChanged() {
+        viewModel.selectedSegmentIndex = segmentedControl.selectedSegmentIndex
+
         viewModel.attemptFetch()
         tableView.reloadData()
     }
 
     @objc func addButtonTapped() {
         navigationController?.pushViewController(DetailsViewController(), animated: true)
+    }
+}
+
+// MARK: - Constraints
+extension MainViewController {
+    func layoutViews() {
+        view.addSubview(segmentedControl)
+        view.addSubview(tableView)
+
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+
+            tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 20),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
     }
 }

@@ -9,7 +9,6 @@ import CoreData
 import UIKit
 
 class DetailsViewController: UIViewController {
-
     var imagePicker: UIImagePickerController!
     let itemImageView = UIImageView()
     let itemImageButton = UIButton()
@@ -46,7 +45,9 @@ class DetailsViewController: UIViewController {
     func configureViews() {
         view.backgroundColor = .white
         title = "Add / Edit"
-        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteTapped))
+        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash,
+                                                 target: self,
+                                                 action: #selector(deleteTapped))
         rightBarButtonItem.tintColor = .red
         navigationItem.rightBarButtonItem = rightBarButtonItem
 

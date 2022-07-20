@@ -8,6 +8,13 @@
 import UIKit
 
 class ItemTableViewCell: UITableViewCell {
+    var viewModel: ItemTableViewCellViewModel! {
+        didSet {
+            configureViews()
+            layoutViews()
+        }
+    }
+
     let itemContentView = UIView()
     let itemImageView = UIImageView()
     lazy var itemLabelStack = UIStackView(arrangedSubviews: [itemNameLabel, itemPriceLabel, itemDetailsLabel])
@@ -17,40 +24,44 @@ class ItemTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
-        layoutViews()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configureViews(withItem item: Item) {
+    func configureViews() {
         contentView.backgroundColor = .clear
 
         itemContentView.backgroundColor = .white
         itemContentView.shadowDesign = true
 
-        itemImageView.image = item.image?.image as? UIImage ?? UIImage(named: "imagePick")
+        itemImageView.image = viewModel.itemImage.image as? UIImage ?? UIImage(named: "imagePick")
         itemImageView.contentMode = .scaleAspectFit
         itemImageView.clipsToBounds = true
 
-        itemNameLabel.text = item.name
+        itemNameLabel.text = viewModel.itemName
         itemNameLabel.font = UIFont(name: "Helvetica Neue Medium", size: 20)
+        itemNameLabel.textAlignment = .left
 
-        itemPriceLabel.text = "$\(item.price)"
+        itemPriceLabel.text = "$\(viewModel.itemPrice)"
         itemPriceLabel.font = UIFont(name: "Helvetica Neue Regular", size: 18)
 
-        itemDetailsLabel.text = item.details
+        itemDetailsLabel.text = viewModel.itemDetails
         itemDetailsLabel.textColor = .lightGray
-        itemDetailsLabel.font = UIFont(name: "Helvetica Neue Regular", size: 15)
-        itemDetailsLabel.numberOfLines = 3
+        itemDetailsLabel.font = UIFont(name: "Helvetica Neue Regular", size: 18)
+        itemDetailsLabel.numberOfLines = 2
 
         itemLabelStack.axis = .vertical
         itemLabelStack.distribution = .fill
-        itemLabelStack.spacing = 8
+        itemLabelStack.spacing = 5
+        itemLabelStack.alignment = .leading
     }
+}
 
+// MARK: - Constraints
+
+extension ItemTableViewCell {
     func layoutViews() {
         contentView.addSubview(itemContentView)
         itemContentView.addSubview(itemImageView)
@@ -71,19 +82,15 @@ class ItemTableViewCell: UITableViewCell {
             itemImageView.heightAnchor.constraint(equalToConstant: 100),
             itemImageView.widthAnchor.constraint(equalToConstant: 100),
 
-            itemLabelStack.topAnchor.constraint(equalTo: itemContentView.topAnchor, constant: 8),
-            itemLabelStack.bottomAnchor.constraint(equalTo: itemContentView.bottomAnchor, constant: -8),
+            itemLabelStack.centerYAnchor.constraint(equalTo: itemContentView.centerYAnchor),
             itemLabelStack.leadingAnchor.constraint(equalTo: itemImageView.trailingAnchor, constant: 8),
             itemLabelStack.trailingAnchor.constraint(equalTo: itemContentView.trailingAnchor, constant: -8),
 
             itemNameLabel.trailingAnchor.constraint(equalTo: itemContentView.trailingAnchor, constant: -8),
-            itemNameLabel.heightAnchor.constraint(equalToConstant: 25),
 
             itemPriceLabel.trailingAnchor.constraint(equalTo: itemContentView.trailingAnchor, constant: -8),
-            itemPriceLabel.heightAnchor.constraint(equalToConstant: 25),
 
-            itemDetailsLabel.trailingAnchor.constraint(equalTo: itemContentView.trailingAnchor, constant: -8),
-            itemDetailsLabel.heightAnchor.constraint(equalToConstant: 25)
+            itemDetailsLabel.trailingAnchor.constraint(equalTo: itemContentView.trailingAnchor, constant: -8)
         ])
     }
 }

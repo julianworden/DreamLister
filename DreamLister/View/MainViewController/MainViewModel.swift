@@ -98,12 +98,4 @@ class MainViewModel: NSObject, NSFetchedResultsControllerDelegate {
             break
         }
     }
-
-//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        self.tableViewDidBeginUpdates.toggle()
-//    }
-//
-//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        self.tableViewDidEndUpdates.toggle()
-//    }
 }

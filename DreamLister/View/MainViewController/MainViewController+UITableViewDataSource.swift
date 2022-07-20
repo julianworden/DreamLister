@@ -27,7 +27,8 @@ extension MainViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellReuseIdentifier, for: indexPath) as? ItemTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellReuseIdentifier,
+                                                    for: indexPath) as? ItemTableViewCell {
             configureCell(cell, indexPath: indexPath)
             return cell
         } else {
@@ -39,6 +40,6 @@ extension MainViewController: UITableViewDataSource {
         cell.selectionStyle = .none
 
         let item = viewModel.controller.object(at: indexPath)
-        cell.configureViews(withItem: item)
+        cell.viewModel = ItemTableViewCellViewModel(item: item)
     }
 }

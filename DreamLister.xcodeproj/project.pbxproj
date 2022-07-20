@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB16D837288838D1009AEA84 /* ItemTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB16D836288838D1009AEA84 /* ItemTableViewCellViewModel.swift */; };
 		AB35BE342884AD9300FE6C76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35BE332884AD9300FE6C76 /* AppDelegate.swift */; };
 		AB35BE362884AD9300FE6C76 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35BE352884AD9300FE6C76 /* SceneDelegate.swift */; };
 		AB35BE382884AD9300FE6C76 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35BE372884AD9300FE6C76 /* MainViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB16D836288838D1009AEA84 /* ItemTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		AB35BE302884AD9300FE6C76 /* DreamLister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamLister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB35BE332884AD9300FE6C76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB35BE352884AD9300FE6C76 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB16D83828883E20009AEA84 /* ItemTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				ABAC68FA2884B72C000B1D33 /* ItemTableViewCell.swift */,
+				AB16D836288838D1009AEA84 /* ItemTableViewCellViewModel.swift */,
+			);
+			path = ItemTableViewCell;
+			sourceTree = "<group>";
+		};
 		AB35BE272884AD9300FE6C76 = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +133,6 @@
 				AB4A93012886FA010093DBCE /* MainViewModel.swift */,
 				ABAC68FC2884B7E0000B1D33 /* MainViewController+UITableViewDataSource.swift */,
 				ABAC68FE2884B7EB000B1D33 /* MainViewController+UITableViewDelegate.swift */,
-				ABAC68FA2884B72C000B1D33 /* ItemTableViewCell.swift */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
@@ -144,6 +154,7 @@
 			children = (
 				AB4A92F92886DF370093DBCE /* MainViewController */,
 				AB4A92FA2886DF460093DBCE /* DetailsViewController */,
+				AB16D83828883E20009AEA84 /* ItemTableViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -286,6 +297,7 @@
 				ABBC91832885A40A00D4B343 /* DetailsViewController.swift in Sources */,
 				ABAC68FD2884B7E0000B1D33 /* MainViewController+UITableViewDataSource.swift in Sources */,
 				AB35BE342884AD9300FE6C76 /* AppDelegate.swift in Sources */,
+				AB16D837288838D1009AEA84 /* ItemTableViewCellViewModel.swift in Sources */,
 				AB4A92FE2886DF940093DBCE /* DetailsViewController+UIPickerViewDataSource.swift in Sources */,
 				AB35BE362884AD9300FE6C76 /* SceneDelegate.swift in Sources */,
 				ABAC68FF2884B7EB000B1D33 /* MainViewController+UITableViewDelegate.swift in Sources */,
