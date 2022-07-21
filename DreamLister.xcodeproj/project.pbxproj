@@ -93,10 +93,6 @@
 		AB35BE272884AD9300FE6C76 = {
 			isa = PBXGroup;
 			children = (
-				ABAC68E92884B0C2000B1D33 /* Store+CoreDataClass.swift */,
-				ABAC68EB2884B0C2000B1D33 /* Image+CoreDataClass.swift */,
-				ABAC68ED2884B0C2000B1D33 /* Item+CoreDataClass.swift */,
-				ABAC68EF2884B0C2000B1D33 /* ItemType+CoreDataClass.swift */,
 				AB35BE322884AD9300FE6C76 /* DreamLister */,
 				AB35BE312884AD9300FE6C76 /* Products */,
 			);
@@ -164,6 +160,10 @@
 		ABAC68E72884B057000B1D33 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ABAC68E92884B0C2000B1D33 /* Store+CoreDataClass.swift */,
+				ABAC68EB2884B0C2000B1D33 /* Image+CoreDataClass.swift */,
+				ABAC68ED2884B0C2000B1D33 /* Item+CoreDataClass.swift */,
+				ABAC68EF2884B0C2000B1D33 /* ItemType+CoreDataClass.swift */,
 				ABAC68EA2884B0C2000B1D33 /* Store+CoreDataProperties.swift */,
 				ABAC68EC2884B0C2000B1D33 /* Image+CoreDataProperties.swift */,
 				ABAC68EE2884B0C2000B1D33 /* Item+CoreDataProperties.swift */,

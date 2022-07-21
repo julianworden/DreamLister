@@ -90,6 +90,8 @@ class DetailsViewController: UIViewController {
                 .assign(to: \.text, on: itemPriceTextField),
             viewModel.$itemDetails
                 .assign(to: \.text, on: itemDetailsTextField),
+            viewModel.$itemImage
+                .assign(to: \.image, on: itemImageView),
             viewModel.$selectedStoreIndexPath
                 .sink(receiveValue: { indexPath in
                     if let indexPath = indexPath {
@@ -168,10 +170,4 @@ extension DetailsViewController {
             bottomSectionStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-}
-
-// MARK: - Retrieve Stores
-
-extension DetailsViewController {
-    
 }

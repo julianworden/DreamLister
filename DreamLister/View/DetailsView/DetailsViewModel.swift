@@ -7,6 +7,7 @@
 
 import CoreData
 import Foundation
+import UIKit.UIImage
 
 class DetailsViewModel {
     var itemToEdit: Item?
@@ -17,31 +18,26 @@ class DetailsViewModel {
     @Published var itemPrice: String?
     @Published var itemDetails: String?
     @Published var itemStore: Store?
+    @Published var itemImage: UIImage?
 
     init(itemToEdit: Item?) {
 //        generateStores()
+        self.itemToEdit = itemToEdit
+
         getStores()
-
-        if let itemToEdit = itemToEdit {
-            self.itemToEdit = itemToEdit
-            loadExistingData()
-
-            if let selectedStoreIndexPath = stores.firstIndex(of: itemToEdit.store!) {
-                 self.selectedStoreIndexPath = selectedStoreIndexPath
-            }
-        }
+        attemptToLoadExistingData()
     }
 
     func saveItem() {
         var item: Item!
-//        let image = Image(context: Constants.context)
-//        image.image = itemImageView.image
+        let image = Image(context: Constants.context)
+        image.image = itemImage
 
         if itemToEdit != nil {
             item = itemToEdit
         } else {
             item = Item(context: Constants.context)
-            //            itemImageView.image = UIImage(named: "imagePick")
+            itemImage = UIImage(named: "imagePick")
         }
 
         guard let name = itemName,
@@ -53,7 +49,7 @@ class DetailsViewModel {
         item.name = name
         item.price = Double(price) ?? 0.0
         item.details = details
-//        item.image = image
+        item.image = image
         item.store = stores[selectedStoreIndexPath ?? 0]
         Constants.appDelegate.saveContext()
     }
@@ -99,14 +95,19 @@ class DetailsViewModel {
         }
     }
 
-    // This function is only called when itemToEdit is set, so it won't be nil
-    func loadExistingData() {
-        itemName = itemToEdit!.name
-        itemPrice = String(itemToEdit!.price)
-        itemDetails = itemToEdit!.details
-//        itemImageView.image = itemToEdit!.image?.image as? UIImage ?? UIImage(named: "imagePick")
+    func attemptToLoadExistingData() {
+        guard let itemToEdit = itemToEdit else {
+            itemImage = UIImage(named: "imagePick")
+            return
+        }
 
-        if let store = itemToEdit!.store,
+        self.itemToEdit = itemToEdit
+        itemName = itemToEdit.name
+        itemPrice = String(itemToEdit.price)
+        itemDetails = itemToEdit.details
+        itemImage = itemToEdit.image?.image as? UIImage ?? UIImage(named: "imagePick")
+
+        if let store = itemToEdit.store,
            let indexPath = stores.firstIndex(of: store) {
             selectedStoreIndexPath = indexPath
         } else {

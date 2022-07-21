@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 extension DetailsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[.originalImage] as? UIImage {
-            itemImageView.image = image
+            viewModel.itemImage = image
         }
 
         picker.dismiss(animated: true)

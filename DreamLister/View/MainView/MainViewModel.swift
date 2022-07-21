@@ -76,23 +76,23 @@ class MainViewModel: NSObject, NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             if let indexPath = newIndexPath {
-                self.updatedIndexPath = indexPath
                 self.controllerChangeType = .insert
+                self.updatedIndexPath = indexPath
             }
         case .delete:
             if let indexPath = indexPath {
-                self.updatedIndexPath = indexPath
                 self.controllerChangeType = .delete
+                self.updatedIndexPath = indexPath
             }
         case .update:
             if let indexPath = indexPath {
-                self.updatedIndexPath = indexPath
                 self.controllerChangeType = .update
+                self.updatedIndexPath = indexPath
             }
         case .move:
             if let indexPath = newIndexPath {
-                self.updatedIndexPath = indexPath
                 self.controllerChangeType = .move
+                self.updatedIndexPath = indexPath
             }
         @unknown default:
             break
