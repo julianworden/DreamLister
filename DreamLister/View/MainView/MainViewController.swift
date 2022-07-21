@@ -92,11 +92,14 @@ class MainViewController: UIViewController {
     }
 
     @objc func addButtonTapped() {
-        navigationController?.pushViewController(DetailsViewController(), animated: true)
+        let detailsViewController = DetailsViewController()
+        detailsViewController.viewModel = DetailsViewModel(itemToEdit: nil)
+        navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }
 
 // MARK: - Constraints
+
 extension MainViewController {
     func layoutViews() {
         view.addSubview(segmentedControl)

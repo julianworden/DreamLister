@@ -14,7 +14,7 @@ extension MainViewController: UITableViewDelegate {
                objects.count > 0 {
                    let item = objects[indexPath.row]
                    let detailsViewController = DetailsViewController()
-                   detailsViewController.itemToEdit = item
+                   detailsViewController.viewModel = DetailsViewModel(itemToEdit: item)
                    navigationController?.pushViewController(detailsViewController, animated: true)
                }
     }

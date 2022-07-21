@@ -9,5 +9,7 @@ import Foundation
 import UIKit
 
 extension DetailsViewController: UIPickerViewDelegate {
-    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        viewModel.selectedStoreIndexPath = row
+    }
 }

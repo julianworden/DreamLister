@@ -36,7 +36,8 @@ class ItemTableViewCell: UITableViewCell {
         itemContentView.backgroundColor = .white
         itemContentView.shadowDesign = true
 
-        itemImageView.image = viewModel.itemImage.image as? UIImage ?? UIImage(named: "imagePick")
+//        itemImageView.image = viewModel.itemImage.image as? UIImage ?? UIImage(named: "imagePick")
+        itemImageView.image = UIImage(named: "imagePick")
         itemImageView.contentMode = .scaleAspectFit
         itemImageView.clipsToBounds = true
 

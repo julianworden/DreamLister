@@ -5,10 +5,20 @@
 //  Created by Julian Worden on 7/18/22.
 //
 
+import Combine
 import CoreData
 import UIKit
 
 class DetailsViewController: UIViewController {
+    var viewModel: DetailsViewModel! {
+        didSet {
+            configureViews()
+            layoutViews()
+            configureSubscribers()
+        }
+    }
+    var subscribers = Set<AnyCancellable>()
+
     var imagePicker: UIImagePickerController!
     let itemImageView = UIImageView()
     let itemImageButton = UIButton()
@@ -21,25 +31,8 @@ class DetailsViewController: UIViewController {
     let storePicker = UIPickerView()
     let saveItemButton = UIButton()
 
-    var stores = [Store]()
-    var itemToEdit: Item? {
-        didSet {
-            loadExistingData()
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        configureViews()
-        layoutViews()
-
-//        generateStores()
-        getStores()
-
-        if itemToEdit != nil {
-            loadExistingData()
-        }
     }
 
     func configureViews() {
@@ -89,6 +82,48 @@ class DetailsViewController: UIViewController {
         saveItemButton.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
     }
 
+    func configureSubscribers() {
+        subscribers = [
+            viewModel.$itemName
+                .assign(to: \.text, on: itemNameTextField),
+            viewModel.$itemPrice
+                .assign(to: \.text, on: itemPriceTextField),
+            viewModel.$itemDetails
+                .assign(to: \.text, on: itemDetailsTextField),
+            viewModel.$selectedStoreIndexPath
+                .sink(receiveValue: { indexPath in
+                    if let indexPath = indexPath {
+                        self.storePicker.selectRow(indexPath, inComponent: 0, animated: true)
+                    }
+                }),
+            viewModel.$stores
+                .sink(receiveValue: { _ in
+                    self.storePicker.reloadAllComponents()
+                })
+        ]
+    }
+
+    @objc func saveTapped() {
+        viewModel.itemName = itemNameTextField.text
+        viewModel.itemPrice = itemPriceTextField.text
+        viewModel.itemDetails = itemDetailsTextField.text
+        viewModel.saveItem()
+        navigationController?.popViewController(animated: true)
+    }
+
+    @objc func deleteTapped() {
+        viewModel.deleteItem()
+        navigationController?.popViewController(animated: true)
+    }
+
+    @objc func addImageTapped() {
+        present(imagePicker, animated: true)
+    }
+}
+
+// MARK: - Constraints
+
+extension DetailsViewController {
     func layoutViews() {
         view.addSubview(itemImageView)
         view.addSubview(itemImageButton)
@@ -133,99 +168,10 @@ class DetailsViewController: UIViewController {
             bottomSectionStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-
-    @objc func saveTapped() {
-        var item: Item!
-        let image = Image(context: Constants.context)
-        image.image = itemImageView.image
-
-        if itemToEdit != nil {
-            item = itemToEdit
-        } else {
-            item = Item(context: Constants.context)
-//            itemImageView.image = UIImage(named: "imagePick")
-        }
-
-        guard let title = itemNameTextField.text,
-              let price = itemPriceTextField.text,
-              let details = itemDetailsTextField.text,
-              !title.isEmpty,
-              !price.isEmpty else { return }
-
-        item.name = title
-        item.price = Double(price) ?? 0
-        item.details = details
-        item.image = image
-        item.store = stores[storePicker.selectedRow(inComponent: 0)]
-
-        Constants.appDelegate.saveContext()
-
-        navigationController?.popViewController(animated: true)
-    }
-
-    @objc func deleteTapped() {
-        if itemToEdit != nil {
-            Constants.context.delete(itemToEdit!)
-            Constants.appDelegate.saveContext()
-        }
-
-        navigationController?.popViewController(animated: true)
-    }
-
-    @objc func addImageTapped() {
-        present(imagePicker, animated: true)
-    }
 }
 
-// MARK: Retrieve Stores
+// MARK: - Retrieve Stores
+
 extension DetailsViewController {
-    func generateStores() {
-        let store1 = Store(context: Constants.context)
-        store1.name = "Best Buy"
-
-        let store2 = Store(context: Constants.context)
-        store2.name = "Apple"
-
-        let store3 = Store(context: Constants.context)
-        store3.name = "Tesla Motors"
-
-        let store4 = Store(context: Constants.context)
-        store4.name = "CVS"
-
-        let store5 = Store(context: Constants.context)
-        store5.name = "Amazon"
-
-        let store6 = Store(context: Constants.context)
-        store6.name = "Lids"
-
-        Constants.appDelegate.saveContext()
-    }
-
-    func getStores() {
-        let fetchRequest: NSFetchRequest<Store> = Store.fetchRequest()
-        let nameSort = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.sortDescriptors = [nameSort]
-
-        do {
-            self.stores = try Constants.context.fetch(fetchRequest)
-            self.storePicker.reloadAllComponents()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-
-    // This function is only called when itemToEdit is set, so it won't be nil
-    func loadExistingData() {
-        itemNameTextField.text = itemToEdit!.name
-        itemPriceTextField.text = String(itemToEdit!.price)
-        itemDetailsTextField.text = itemToEdit!.details
-        itemImageView.image = itemToEdit!.image?.image as? UIImage ?? UIImage(named: "imagePick")
-
-        if let store = itemToEdit!.store,
-           let indexPath = stores.firstIndex(of: store) {
-            storePicker.selectRow(indexPath, inComponent: 0, animated: false)
-        } else {
-            storePicker.selectRow(0, inComponent: 0, animated: false)
-        }
-    }
+    
 }

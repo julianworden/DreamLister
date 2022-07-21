@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB16D837288838D1009AEA84 /* ItemTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB16D836288838D1009AEA84 /* ItemTableViewCellViewModel.swift */; };
+		AB16D83A28883F3A009AEA84 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB16D83928883F3A009AEA84 /* DetailsViewModel.swift */; };
 		AB35BE342884AD9300FE6C76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35BE332884AD9300FE6C76 /* AppDelegate.swift */; };
 		AB35BE362884AD9300FE6C76 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35BE352884AD9300FE6C76 /* SceneDelegate.swift */; };
 		AB35BE382884AD9300FE6C76 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35BE372884AD9300FE6C76 /* MainViewController.swift */; };
@@ -32,12 +33,13 @@
 		ABAC68FF2884B7EB000B1D33 /* MainViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC68FE2884B7EB000B1D33 /* MainViewController+UITableViewDelegate.swift */; };
 		ABAC69012884C0C2000B1D33 /* UIView+shadowDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC69002884C0C2000B1D33 /* UIView+shadowDesign.swift */; };
 		ABAC69052884C7D4000B1D33 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAC69042884C7D4000B1D33 /* Constants.swift */; };
-		ABBC91812885A33C00D4B343 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC91802885A33C00D4B343 /* CustomTextField.swift */; };
+		ABBC91812885A33C00D4B343 /* UITextField+CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC91802885A33C00D4B343 /* UITextField+CustomTextField.swift */; };
 		ABBC91832885A40A00D4B343 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC91822885A40A00D4B343 /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AB16D836288838D1009AEA84 /* ItemTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		AB16D83928883F3A009AEA84 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		AB35BE302884AD9300FE6C76 /* DreamLister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamLister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB35BE332884AD9300FE6C76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB35BE352884AD9300FE6C76 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +66,7 @@
 		ABAC68FE2884B7EB000B1D33 /* MainViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		ABAC69002884C0C2000B1D33 /* UIView+shadowDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+shadowDesign.swift"; sourceTree = "<group>"; };
 		ABAC69042884C7D4000B1D33 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		ABBC91802885A33C00D4B343 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		ABBC91802885A33C00D4B343 /* UITextField+CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+CustomTextField.swift"; sourceTree = "<group>"; };
 		ABBC91822885A40A00D4B343 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,7 +128,7 @@
 			path = DreamLister;
 			sourceTree = "<group>";
 		};
-		AB4A92F92886DF370093DBCE /* MainViewController */ = {
+		AB4A92F92886DF370093DBCE /* MainView */ = {
 			isa = PBXGroup;
 			children = (
 				AB35BE372884AD9300FE6C76 /* MainViewController.swift */,
@@ -134,26 +136,26 @@
 				ABAC68FC2884B7E0000B1D33 /* MainViewController+UITableViewDataSource.swift */,
 				ABAC68FE2884B7EB000B1D33 /* MainViewController+UITableViewDelegate.swift */,
 			);
-			path = MainViewController;
+			path = MainView;
 			sourceTree = "<group>";
 		};
-		AB4A92FA2886DF460093DBCE /* DetailsViewController */ = {
+		AB4A92FA2886DF460093DBCE /* DetailsView */ = {
 			isa = PBXGroup;
 			children = (
 				ABBC91822885A40A00D4B343 /* DetailsViewController.swift */,
+				AB16D83928883F3A009AEA84 /* DetailsViewModel.swift */,
 				AB4A92FD2886DF940093DBCE /* DetailsViewController+UIPickerViewDataSource.swift */,
 				AB4A92FB2886DF850093DBCE /* DetailsViewController+UIPickerViewDelegate.swift */,
 				AB4A92FF2886F6DF0093DBCE /* DetailsViewController+UIImagePickerControllerDelegate.swift */,
-				ABBC91802885A33C00D4B343 /* CustomTextField.swift */,
 			);
-			path = DetailsViewController;
+			path = DetailsView;
 			sourceTree = "<group>";
 		};
 		ABAC68E62884B050000B1D33 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AB4A92F92886DF370093DBCE /* MainViewController */,
-				AB4A92FA2886DF460093DBCE /* DetailsViewController */,
+				AB4A92F92886DF370093DBCE /* MainView */,
+				AB4A92FA2886DF460093DBCE /* DetailsView */,
 				AB16D83828883E20009AEA84 /* ItemTableViewCell */,
 			);
 			path = View;
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				ABAC69002884C0C2000B1D33 /* UIView+shadowDesign.swift */,
+				ABBC91802885A33C00D4B343 /* UITextField+CustomTextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -289,8 +292,9 @@
 				ABAC68F62884B0C2000B1D33 /* Item+CoreDataProperties.swift in Sources */,
 				ABAC68FB2884B72D000B1D33 /* ItemTableViewCell.swift in Sources */,
 				AB35BE382884AD9300FE6C76 /* MainViewController.swift in Sources */,
-				ABBC91812885A33C00D4B343 /* CustomTextField.swift in Sources */,
+				ABBC91812885A33C00D4B343 /* UITextField+CustomTextField.swift in Sources */,
 				ABAC69012884C0C2000B1D33 /* UIView+shadowDesign.swift in Sources */,
+				AB16D83A28883F3A009AEA84 /* DetailsViewModel.swift in Sources */,
 				ABAC68F12884B0C2000B1D33 /* Store+CoreDataClass.swift in Sources */,
 				ABAC69052884C7D4000B1D33 /* Constants.swift in Sources */,
 				ABAC68F82884B0C2000B1D33 /* ItemType+CoreDataProperties.swift in Sources */,
